@@ -1,6 +1,8 @@
 
 package net.mcreator.shadowfall.block;
 
+import org.checkerframework.checker.units.qual.s;
+
 import net.minecraftforge.common.IPlantable;
 
 import net.minecraft.world.level.storage.loot.LootContext;
@@ -23,7 +25,6 @@ public class ShadeShaleBlock extends Block {
 	public ShadeShaleBlock() {
 		super(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.STONE).strength(1f, 10f).lightLevel(s -> 1).requiresCorrectToolForDrops()
 				.friction(0.7000000000000001f).speedFactor(1.1f));
-		setRegistryName("shade_shale");
 	}
 
 	@Override
@@ -38,7 +39,7 @@ public class ShadeShaleBlock extends Block {
 
 	@Override
 	public boolean canHarvestBlock(BlockState state, BlockGetter world, BlockPos pos, Player player) {
-		if (player.getInventory().getSelected().getItem()instanceof TieredItem tieredItem)
+		if (player.getInventory().getSelected().getItem() instanceof TieredItem tieredItem)
 			return tieredItem.getTier().getLevel() >= 1;
 		return false;
 	}

@@ -140,7 +140,7 @@ public class ShadelandsDimPortalShape {
 				if (!isEmpty(blockstate)) {
 					return i;
 				}
-				if (blockstate.getBlock() == ShadowfallModBlocks.SHADELANDS_DIM_PORTAL) {
+				if (blockstate.getBlock() == ShadowfallModBlocks.SHADELANDS_DIM_PORTAL.get()) {
 					++this.numPortalBlocks;
 				}
 			}
@@ -149,7 +149,7 @@ public class ShadelandsDimPortalShape {
 	}
 
 	private static boolean isEmpty(BlockState p_77718_) {
-		return p_77718_.isAir() || p_77718_.getBlock() == ShadowfallModBlocks.SHADELANDS_DIM_PORTAL;
+		return p_77718_.isAir() || p_77718_.getBlock() == ShadowfallModBlocks.SHADELANDS_DIM_PORTAL.get();
 	}
 
 	public boolean isValid() {
@@ -157,7 +157,7 @@ public class ShadelandsDimPortalShape {
 	}
 
 	public void createPortalBlocks() {
-		BlockState blockstate = ShadowfallModBlocks.SHADELANDS_DIM_PORTAL.defaultBlockState().setValue(NetherPortalBlock.AXIS, this.axis);
+		BlockState blockstate = ShadowfallModBlocks.SHADELANDS_DIM_PORTAL.get().defaultBlockState().setValue(NetherPortalBlock.AXIS, this.axis);
 		BlockPos.betweenClosed(this.bottomLeft, this.bottomLeft.relative(Direction.UP, this.height - 1).relative(this.rightDir, this.width - 1))
 				.forEach((p_77725_) -> {
 					this.level.setBlock(p_77725_, blockstate, 18);

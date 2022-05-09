@@ -4,44 +4,33 @@
  */
 package net.mcreator.shadowfall.init;
 
+import net.minecraftforge.registries.RegistryObject;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.api.distmarker.Dist;
 
 import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 
 import net.mcreator.shadowfall.fluid.ShadelandsWaterFluid;
+import net.mcreator.shadowfall.ShadowfallMod;
 
-import java.util.List;
-import java.util.ArrayList;
-
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ShadowfallModFluids {
-	private static final List<Fluid> REGISTRY = new ArrayList<>();
-	public static final FlowingFluid SHADELANDS_WATER = register(new ShadelandsWaterFluid.Source());
-	public static final FlowingFluid FLOWING_SHADELANDS_WATER = register(new ShadelandsWaterFluid.Flowing());
-
-	private static FlowingFluid register(FlowingFluid fluid) {
-		REGISTRY.add(fluid);
-		return fluid;
-	}
-
-	@SubscribeEvent
-	public static void registerFluids(RegistryEvent.Register<Fluid> event) {
-		event.getRegistry().registerAll(REGISTRY.toArray(new Fluid[0]));
-	}
+	public static final DeferredRegister<Fluid> REGISTRY = DeferredRegister.create(ForgeRegistries.FLUIDS, ShadowfallMod.MODID);
+	public static final RegistryObject<Fluid> SHADELANDS_WATER = REGISTRY.register("shadelands_water", () -> new ShadelandsWaterFluid.Source());
+	public static final RegistryObject<Fluid> FLOWING_SHADELANDS_WATER = REGISTRY.register("flowing_shadelands_water",
+			() -> new ShadelandsWaterFluid.Flowing());
 
 	@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 	public static class ClientSideHandler {
 		@SubscribeEvent
 		public static void clientSetup(FMLClientSetupEvent event) {
-			ItemBlockRenderTypes.setRenderLayer(SHADELANDS_WATER, renderType -> renderType == RenderType.translucent());
-			ItemBlockRenderTypes.setRenderLayer(FLOWING_SHADELANDS_WATER, renderType -> renderType == RenderType.translucent());
+			ItemBlockRenderTypes.setRenderLayer(SHADELANDS_WATER.get(), renderType -> renderType == RenderType.translucent());
+			ItemBlockRenderTypes.setRenderLayer(FLOWING_SHADELANDS_WATER.get(), renderType -> renderType == RenderType.translucent());
 		}
 	}
 }

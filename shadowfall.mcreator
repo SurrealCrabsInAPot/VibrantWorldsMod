@@ -164,7 +164,27 @@
       "sortid": 34,
       "compiles": true,
       "locked_code": false,
-      "registry_name": "shadeair"
+      "registry_name": "shadeair",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
     },
     {
       "name": "ShadeAirUpdatTick",
@@ -310,9 +330,9 @@
     "dependencies": [],
     "dependants": [],
     "mcreatorDependencies": [],
-    "currentGenerator": "forge-1.17.1",
+    "currentGenerator": "forge-1.18.2",
     "modElementsPackage": "net.mcreator.shadowfall",
     "lockBaseModFiles": false
   },
-  "mcreatorVersion": 202100354000
+  "mcreatorVersion": 202200119518
 }

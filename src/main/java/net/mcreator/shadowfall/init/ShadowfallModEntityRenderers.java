@@ -16,7 +16,7 @@ import net.mcreator.shadowfall.client.renderer.CarfungalRenderer;
 public class ShadowfallModEntityRenderers {
 	@SubscribeEvent
 	public static void registerEntityRenderers(EntityRenderersEvent.RegisterRenderers event) {
-		event.registerEntityRenderer(ShadowfallModEntities.CARFUNGAL, CarfungalRenderer::new);
-		event.registerEntityRenderer(ShadowfallModEntities.SHADELING, ShadelingRenderer::new);
+		event.registerEntityRenderer(ShadowfallModEntities.CARFUNGAL.get(), CarfungalRenderer::new);
+		event.registerEntityRenderer(ShadowfallModEntities.SHADELING.get(), ShadelingRenderer::new);
 	}
 }

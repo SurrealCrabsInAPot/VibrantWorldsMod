@@ -1,6 +1,8 @@
 
 package net.mcreator.shadowfall.block;
 
+import org.checkerframework.checker.units.qual.s;
+
 import net.minecraftforge.common.PlantType;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.api.distmarker.Dist;
@@ -30,7 +32,6 @@ public class PurshroomBlock extends FlowerBlock {
 	public PurshroomBlock() {
 		super(MobEffects.NIGHT_VISION, 100, BlockBehaviour.Properties.of(Material.PLANT).noCollission().sound(SoundType.GRASS).instabreak()
 				.hasPostProcess((bs, br, bp) -> true).emissiveRendering((bs, br, bp) -> true).lightLevel(s -> 5));
-		setRegistryName("purshroom");
 	}
 
 	@Override
@@ -58,7 +59,7 @@ public class PurshroomBlock extends FlowerBlock {
 
 	@Override
 	public boolean mayPlaceOn(BlockState groundState, BlockGetter worldIn, BlockPos pos) {
-		return groundState.is(ShadowfallModBlocks.SHADE_SHALE) || groundState.is(Blocks.DIRT) || groundState.is(Blocks.GRASS_BLOCK)
+		return groundState.is(ShadowfallModBlocks.SHADE_SHALE.get()) || groundState.is(Blocks.DIRT) || groundState.is(Blocks.GRASS_BLOCK)
 
 		;
 	}
@@ -77,6 +78,6 @@ public class PurshroomBlock extends FlowerBlock {
 
 	@OnlyIn(Dist.CLIENT)
 	public static void registerRenderLayer() {
-		ItemBlockRenderTypes.setRenderLayer(ShadowfallModBlocks.PURSHROOM, renderType -> renderType == RenderType.cutout());
+		ItemBlockRenderTypes.setRenderLayer(ShadowfallModBlocks.PURSHROOM.get(), renderType -> renderType == RenderType.cutout());
 	}
 }

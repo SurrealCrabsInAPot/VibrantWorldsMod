@@ -16,13 +16,24 @@ package net.mcreator.shadowfall;
 import org.apache.logging.log4j.Logger;
 import org.apache.logging.log4j.LogManager;
 
-import net.minecraftforge.fmllegacy.network.simple.SimpleChannel;
-import net.minecraftforge.fmllegacy.network.NetworkRegistry;
-import net.minecraftforge.fmllegacy.network.NetworkEvent;
+import net.minecraftforge.network.simple.SimpleChannel;
+import net.minecraftforge.network.NetworkRegistry;
+import net.minecraftforge.network.NetworkEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.eventbus.api.IEventBus;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.network.FriendlyByteBuf;
+
+import net.mcreator.shadowfall.init.ShadowfallModParticleTypes;
+import net.mcreator.shadowfall.init.ShadowfallModItems;
+import net.mcreator.shadowfall.init.ShadowfallModFluids;
+import net.mcreator.shadowfall.init.ShadowfallModFeatures;
+import net.mcreator.shadowfall.init.ShadowfallModEntities;
+import net.mcreator.shadowfall.init.ShadowfallModEnchantments;
+import net.mcreator.shadowfall.init.ShadowfallModBlocks;
+import net.mcreator.shadowfall.init.ShadowfallModBiomes;
 
 import java.util.function.Supplier;
 import java.util.function.Function;
@@ -39,6 +50,17 @@ public class ShadowfallMod {
 
 	public ShadowfallMod() {
 
+		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+		ShadowfallModBlocks.REGISTRY.register(bus);
+		ShadowfallModItems.REGISTRY.register(bus);
+		ShadowfallModEntities.REGISTRY.register(bus);
+
+		ShadowfallModFeatures.REGISTRY.register(bus);
+		ShadowfallModFluids.REGISTRY.register(bus);
+		ShadowfallModEnchantments.REGISTRY.register(bus);
+
+		ShadowfallModBiomes.REGISTRY.register(bus);
+		ShadowfallModParticleTypes.REGISTRY.register(bus);
 	}
 
 	public static <T> void addNetworkMessage(Class<T> messageType, BiConsumer<T, FriendlyByteBuf> encoder, Function<FriendlyByteBuf, T> decoder,

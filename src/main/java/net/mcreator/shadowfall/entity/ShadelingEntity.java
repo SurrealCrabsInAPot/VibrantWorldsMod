@@ -2,8 +2,8 @@
 package net.mcreator.shadowfall.entity;
 
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.fmllegacy.network.NetworkHooks;
-import net.minecraftforge.fmllegacy.network.FMLPlayMessages;
+import net.minecraftforge.network.PlayMessages;
+import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
@@ -31,6 +31,7 @@ import net.minecraft.world.entity.PathfinderMob;
 import net.minecraft.world.entity.MobType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.damagesource.DamageSource;
@@ -54,11 +55,11 @@ public class ShadelingEntity extends PathfinderMob {
 	@SubscribeEvent
 	public static void addLivingEntityToBiomes(BiomeLoadingEvent event) {
 		if (SPAWN_BIOMES.contains(event.getName()))
-			event.getSpawns().getSpawner(MobCategory.MONSTER).add(new MobSpawnSettings.SpawnerData(ShadowfallModEntities.SHADELING, 4, 4, 4));
+			event.getSpawns().getSpawner(MobCategory.MONSTER).add(new MobSpawnSettings.SpawnerData(ShadowfallModEntities.SHADELING.get(), 4, 4, 4));
 	}
 
-	public ShadelingEntity(FMLPlayMessages.SpawnEntity packet, Level world) {
-		this(ShadowfallModEntities.SHADELING, world);
+	public ShadelingEntity(PlayMessages.SpawnEntity packet, Level world) {
+		this(ShadowfallModEntities.SHADELING.get(), world);
 	}
 
 	public ShadelingEntity(EntityType<ShadelingEntity> type, Level world) {
@@ -77,7 +78,12 @@ public class ShadelingEntity extends PathfinderMob {
 		super.registerGoals();
 		this.goalSelector.addGoal(1, new AvoidEntityGoal<>(this, Cow.class, (float) 6, 1, 1.2));
 		this.goalSelector.addGoal(2, new AvoidEntityGoal<>(this, Sheep.class, (float) 6, 1, 1.2));
-		this.goalSelector.addGoal(3, new MeleeAttackGoal(this, 1.2, false));
+		this.goalSelector.addGoal(3, new MeleeAttackGoal(this, 1.2, false) {
+			@Override
+			protected double getAttackReachSqr(LivingEntity entity) {
+				return (double) (4.0 + entity.getBbWidth() * entity.getBbWidth());
+			}
+		});
 		this.goalSelector.addGoal(4, new RandomStrollGoal(this, 1));
 		this.targetSelector.addGoal(5, new HurtByTargetGoal(this));
 		this.goalSelector.addGoal(6, new RandomLookAroundGoal(this));
@@ -135,10 +141,10 @@ public class ShadelingEntity extends PathfinderMob {
 	}
 
 	public static void init() {
-		SpawnPlacements.register(ShadowfallModEntities.SHADELING, SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+		SpawnPlacements.register(ShadowfallModEntities.SHADELING.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
 				(entityType, world, reason, pos, random) -> (world.getDifficulty() != Difficulty.PEACEFUL
 						&& Monster.isDarkEnoughToSpawn(world, pos, random) && Mob.checkMobSpawnRules(entityType, world, reason, pos, random)));
-		DungeonHooks.addDungeonMob(ShadowfallModEntities.SHADELING, 180);
+		DungeonHooks.addDungeonMob(ShadowfallModEntities.SHADELING.get(), 180);
 	}
 
 	public static AttributeSupplier.Builder createAttributes() {

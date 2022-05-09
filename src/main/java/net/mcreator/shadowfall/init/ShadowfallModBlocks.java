@@ -4,10 +4,12 @@
  */
 package net.mcreator.shadowfall.init;
 
+import net.minecraftforge.registries.RegistryObject;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.api.distmarker.Dist;
 
 import net.minecraft.world.level.block.Block;
@@ -16,33 +18,21 @@ import net.mcreator.shadowfall.block.SoulEchoBlock;
 import net.mcreator.shadowfall.block.ShademossCoveredSlateBlock;
 import net.mcreator.shadowfall.block.ShadelandsWaterBlock;
 import net.mcreator.shadowfall.block.ShadelandsDimPortalBlock;
-import net.mcreator.shadowfall.block.ShadeairBlock;
 import net.mcreator.shadowfall.block.ShadeShaleBlock;
 import net.mcreator.shadowfall.block.PurshroomBlock;
+import net.mcreator.shadowfall.ShadowfallMod;
 
-import java.util.List;
-import java.util.ArrayList;
-
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ShadowfallModBlocks {
-	private static final List<Block> REGISTRY = new ArrayList<>();
-	public static final Block SHADELANDS_DIM_PORTAL = register(new ShadelandsDimPortalBlock());
-	public static final Block SHADELANDS_WATER = register(new ShadelandsWaterBlock());
-	public static final Block SOUL_ECHO = register(new SoulEchoBlock());
-	public static final Block SHADE_SHALE = register(new ShadeShaleBlock());
-	public static final Block PURSHROOM = register(new PurshroomBlock());
-	public static final Block SHADEAIR = register(new ShadeairBlock());
-	public static final Block SHADEMOSS_COVERED_SLATE = register(new ShademossCoveredSlateBlock());
-
-	private static Block register(Block block) {
-		REGISTRY.add(block);
-		return block;
-	}
-
-	@SubscribeEvent
-	public static void registerBlocks(RegistryEvent.Register<Block> event) {
-		event.getRegistry().registerAll(REGISTRY.toArray(new Block[0]));
-	}
+	public static final DeferredRegister<Block> REGISTRY = DeferredRegister.create(ForgeRegistries.BLOCKS, ShadowfallMod.MODID);
+	public static final RegistryObject<Block> SHADELANDS_DIM_PORTAL = REGISTRY.register("shadelands_dim_portal",
+			() -> new ShadelandsDimPortalBlock());
+	public static final RegistryObject<Block> SHADELANDS_WATER = REGISTRY.register("shadelands_water", () -> new ShadelandsWaterBlock());
+	public static final RegistryObject<Block> SOUL_ECHO = REGISTRY.register("soul_echo", () -> new SoulEchoBlock());
+	public static final RegistryObject<Block> SHADE_SHALE = REGISTRY.register("shade_shale", () -> new ShadeShaleBlock());
+	public static final RegistryObject<Block> PURSHROOM = REGISTRY.register("purshroom", () -> new PurshroomBlock());
+	public static final RegistryObject<Block> SHADE_AIR = REGISTRY.register("shade_air", () -> new ShadeAirBlock());
+	public static final RegistryObject<Block> SHADEMOSS_COVERED_SLATE = REGISTRY.register("shademoss_covered_slate",
+			() -> new ShademossCoveredSlateBlock());
 
 	@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 	public static class ClientSideHandler {
@@ -50,7 +40,6 @@ public class ShadowfallModBlocks {
 		public static void clientSetup(FMLClientSetupEvent event) {
 			SoulEchoBlock.registerRenderLayer();
 			PurshroomBlock.registerRenderLayer();
-			ShadeairBlock.registerRenderLayer();
 		}
 	}
 }

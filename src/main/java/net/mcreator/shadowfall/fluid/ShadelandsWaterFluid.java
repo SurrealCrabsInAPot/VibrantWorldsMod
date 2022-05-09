@@ -20,8 +20,8 @@ import net.mcreator.shadowfall.init.ShadowfallModFluids;
 import net.mcreator.shadowfall.init.ShadowfallModBlocks;
 
 public abstract class ShadelandsWaterFluid extends ForgeFlowingFluid {
-	public static final ForgeFlowingFluid.Properties PROPERTIES = new ForgeFlowingFluid.Properties(() -> ShadowfallModFluids.SHADELANDS_WATER,
-			() -> ShadowfallModFluids.FLOWING_SHADELANDS_WATER,
+	public static final ForgeFlowingFluid.Properties PROPERTIES = new ForgeFlowingFluid.Properties(ShadowfallModFluids.SHADELANDS_WATER,
+			ShadowfallModFluids.FLOWING_SHADELANDS_WATER,
 			FluidAttributes
 					.builder(new ResourceLocation("shadowfall:blocks/umberroot_log_side"),
 							new ResourceLocation("shadowfall:blocks/umberroot_log_side"))
@@ -31,8 +31,8 @@ public abstract class ShadelandsWaterFluid extends ForgeFlowingFluid {
 
 	).explosionResistance(100f).canMultiply().tickRate(3)
 
-			.slopeFindDistance(7).bucket(() -> ShadowfallModItems.SHADELANDS_WATER_BUCKET)
-			.block(() -> (LiquidBlock) ShadowfallModBlocks.SHADELANDS_WATER);
+			.slopeFindDistance(7).bucket(ShadowfallModItems.SHADELANDS_WATER_BUCKET)
+			.block(() -> (LiquidBlock) ShadowfallModBlocks.SHADELANDS_WATER.get());
 
 	private ShadelandsWaterFluid() {
 		super(PROPERTIES);
@@ -51,7 +51,6 @@ public abstract class ShadelandsWaterFluid extends ForgeFlowingFluid {
 	public static class Source extends ShadelandsWaterFluid {
 		public Source() {
 			super();
-			setRegistryName("shadelands_water");
 		}
 
 		public int getAmount(FluidState state) {
@@ -66,7 +65,6 @@ public abstract class ShadelandsWaterFluid extends ForgeFlowingFluid {
 	public static class Flowing extends ShadelandsWaterFluid {
 		public Flowing() {
 			super();
-			setRegistryName("flowing_shadelands_water");
 		}
 
 		protected void createFluidStateDefinition(StateDefinition.Builder<Fluid, FluidState> builder) {

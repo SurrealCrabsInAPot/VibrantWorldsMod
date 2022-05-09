@@ -15,7 +15,6 @@ import net.mcreator.shadowfall.block.ShadelandsDimPortalBlock;
 public class ShadelandsDimItem extends Item {
 	public ShadelandsDimItem() {
 		super(new Item.Properties().tab(CreativeModeTab.TAB_TOOLS).durability(64));
-		setRegistryName("shadelands_dim");
 	}
 
 	@Override

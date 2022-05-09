@@ -1,6 +1,8 @@
 
 package net.mcreator.shadowfall.block;
 
+import org.checkerframework.checker.units.qual.s;
+
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.api.distmarker.Dist;
 
@@ -27,7 +29,6 @@ public class SoulEchoBlock extends FlowerBlock {
 	public SoulEchoBlock() {
 		super(MobEffects.MOVEMENT_SPEED, 100,
 				BlockBehaviour.Properties.of(Material.PLANT).noCollission().sound(SoundType.GRASS).instabreak().lightLevel(s -> 3));
-		setRegistryName("soul_echo");
 	}
 
 	@Override
@@ -55,6 +56,6 @@ public class SoulEchoBlock extends FlowerBlock {
 
 	@OnlyIn(Dist.CLIENT)
 	public static void registerRenderLayer() {
-		ItemBlockRenderTypes.setRenderLayer(ShadowfallModBlocks.SOUL_ECHO, renderType -> renderType == RenderType.cutout());
+		ItemBlockRenderTypes.setRenderLayer(ShadowfallModBlocks.SOUL_ECHO.get(), renderType -> renderType == RenderType.cutout());
 	}
 }

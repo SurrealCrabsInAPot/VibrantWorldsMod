@@ -7,10 +7,10 @@ import net.mcreator.shadowfall.init.ShadowfallModBlocks;
 
 public class ShadeAirUpdatTickProcedure {
 	public static void execute(LevelAccessor world, double x, double y, double z) {
-		if (ShadowfallModBlocks.PURSHROOM.defaultBlockState().canSurvive(world, new BlockPos((int) x, (int) y, (int) z))) {
-			world.setBlock(new BlockPos((int) x, (int) y, (int) z), ShadowfallModBlocks.PURSHROOM.defaultBlockState(), 3);
-		} else if (ShadowfallModBlocks.SOUL_ECHO.defaultBlockState().canSurvive(world, new BlockPos((int) x, (int) y, (int) z))) {
-			world.setBlock(new BlockPos((int) x, (int) y, (int) z), ShadowfallModBlocks.SOUL_ECHO.defaultBlockState(), 3);
+		if (ShadowfallModBlocks.PURSHROOM.get().defaultBlockState().canSurvive(world, new BlockPos(x, y, z))) {
+			world.setBlock(new BlockPos(x, y, z), ShadowfallModBlocks.PURSHROOM.get().defaultBlockState(), 3);
+		} else if (ShadowfallModBlocks.SOUL_ECHO.get().defaultBlockState().canSurvive(world, new BlockPos(x, y, z))) {
+			world.setBlock(new BlockPos(x, y, z), ShadowfallModBlocks.SOUL_ECHO.get().defaultBlockState(), 3);
 		}
 	}
 }

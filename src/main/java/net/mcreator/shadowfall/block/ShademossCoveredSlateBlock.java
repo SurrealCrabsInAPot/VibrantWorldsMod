@@ -17,7 +17,6 @@ import java.util.Collections;
 public class ShademossCoveredSlateBlock extends Block {
 	public ShademossCoveredSlateBlock() {
 		super(BlockBehaviour.Properties.of(Material.STONE).sound(SoundType.GRAVEL).strength(1f, 10f));
-		setRegistryName("shademoss_covered_slate");
 	}
 
 	@Override

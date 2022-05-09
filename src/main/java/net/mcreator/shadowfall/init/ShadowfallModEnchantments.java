@@ -4,29 +4,16 @@
  */
 package net.mcreator.shadowfall.init;
 
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.registries.RegistryObject;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.DeferredRegister;
 
 import net.minecraft.world.item.enchantment.Enchantment;
 
 import net.mcreator.shadowfall.enchantment.FreakingSweetEnchantment;
+import net.mcreator.shadowfall.ShadowfallMod;
 
-import java.util.List;
-import java.util.ArrayList;
-
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ShadowfallModEnchantments {
-	private static final List<Enchantment> REGISTRY = new ArrayList<>();
-	public static final Enchantment FREAKING_SWEET = register("shadowfall:freaking_sweet", new FreakingSweetEnchantment());
-
-	private static Enchantment register(String registryname, Enchantment enchantment) {
-		REGISTRY.add(enchantment.setRegistryName(registryname));
-		return enchantment;
-	}
-
-	@SubscribeEvent
-	public static void registerEnchantments(RegistryEvent.Register<Enchantment> event) {
-		event.getRegistry().registerAll(REGISTRY.toArray(new Enchantment[0]));
-	}
+	public static final DeferredRegister<Enchantment> REGISTRY = DeferredRegister.create(ForgeRegistries.ENCHANTMENTS, ShadowfallMod.MODID);
+	public static final RegistryObject<Enchantment> FREAKING_SWEET = REGISTRY.register("freaking_sweet", () -> new FreakingSweetEnchantment());
 }

@@ -1,6 +1,8 @@
 
 package net.mcreator.shadowfall.block;
 
+import org.checkerframework.checker.units.qual.s;
+
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.api.distmarker.Dist;
@@ -33,11 +35,6 @@ public class ShadelandsDimPortalBlock extends NetherPortalBlock {
 	public ShadelandsDimPortalBlock() {
 		super(BlockBehaviour.Properties.of(Material.PORTAL).noCollission().randomTicks().strength(-1.0F).sound(SoundType.GLASS).lightLevel(s -> 15)
 				.noDrops());
-		setRegistryName("shadelands_dim_portal");
-	}
-
-	@Override
-	public void tick(BlockState state, ServerLevel world, BlockPos pos, Random random) {
 	}
 
 	@Override

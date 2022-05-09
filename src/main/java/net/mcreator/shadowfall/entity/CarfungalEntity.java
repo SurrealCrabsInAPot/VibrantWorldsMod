@@ -2,8 +2,8 @@
 package net.mcreator.shadowfall.entity;
 
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.fmllegacy.network.NetworkHooks;
-import net.minecraftforge.fmllegacy.network.FMLPlayMessages;
+import net.minecraftforge.network.PlayMessages;
+import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.event.world.BiomeLoadingEvent;
@@ -48,6 +48,7 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.AreaEffectCloud;
 import net.minecraft.world.entity.AgeableMob;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.InteractionResult;
@@ -67,16 +68,16 @@ import java.util.List;
 @Mod.EventBusSubscriber
 public class CarfungalEntity extends TamableAnimal {
 	private static final Set<ResourceLocation> SPAWN_BIOMES = Set.of(new ResourceLocation("mushroom_fields"), new ResourceLocation("dripstone_caves"),
-			new ResourceLocation("mushroom_field_shore"), new ResourceLocation("lush_caves"));
+			new ResourceLocation("lush_caves"));
 
 	@SubscribeEvent
 	public static void addLivingEntityToBiomes(BiomeLoadingEvent event) {
 		if (SPAWN_BIOMES.contains(event.getName()))
-			event.getSpawns().getSpawner(MobCategory.MONSTER).add(new MobSpawnSettings.SpawnerData(ShadowfallModEntities.CARFUNGAL, 20, 1, 4));
+			event.getSpawns().getSpawner(MobCategory.MONSTER).add(new MobSpawnSettings.SpawnerData(ShadowfallModEntities.CARFUNGAL.get(), 20, 1, 4));
 	}
 
-	public CarfungalEntity(FMLPlayMessages.SpawnEntity packet, Level world) {
-		this(ShadowfallModEntities.CARFUNGAL, world);
+	public CarfungalEntity(PlayMessages.SpawnEntity packet, Level world) {
+		this(ShadowfallModEntities.CARFUNGAL.get(), world);
 	}
 
 	public CarfungalEntity(EntityType<CarfungalEntity> type, Level world) {
@@ -101,8 +102,13 @@ public class CarfungalEntity extends TamableAnimal {
 		this.targetSelector.addGoal(6, new NearestAttackableTargetGoal(this, Slime.class, true, false));
 		this.targetSelector.addGoal(7, new NearestAttackableTargetGoal(this, Silverfish.class, true, false));
 		this.targetSelector.addGoal(8, new NearestAttackableTargetGoal(this, EnderMan.class, true, false));
-		this.goalSelector.addGoal(9, new MeleeAttackGoal(this, 1.2, false));
-		this.targetSelector.addGoal(10, new HurtByTargetGoal(this).setAlertOthers(this.getClass()));
+		this.goalSelector.addGoal(9, new MeleeAttackGoal(this, 1.2, false) {
+			@Override
+			protected double getAttackReachSqr(LivingEntity entity) {
+				return (double) (4.0 + entity.getBbWidth() * entity.getBbWidth());
+			}
+		});
+		this.targetSelector.addGoal(10, new HurtByTargetGoal(this).setAlertOthers());
 		this.goalSelector.addGoal(11, new LeapAtTargetGoal(this, (float) 1));
 		this.goalSelector.addGoal(12, new BreedGoal(this, 1));
 		this.goalSelector.addGoal(13, new RestrictSunGoal(this));
@@ -139,7 +145,7 @@ public class CarfungalEntity extends TamableAnimal {
 
 	@Override
 	public boolean hurt(DamageSource source, float amount) {
-		if (source.getDirectEntity() instanceof ThrownPotion)
+		if (source.getDirectEntity() instanceof ThrownPotion || source.getDirectEntity() instanceof AreaEffectCloud)
 			return false;
 		if (source == DamageSource.WITHER)
 			return false;
@@ -196,14 +202,14 @@ public class CarfungalEntity extends TamableAnimal {
 
 	@Override
 	public AgeableMob getBreedOffspring(ServerLevel serverWorld, AgeableMob ageable) {
-		CarfungalEntity retval = ShadowfallModEntities.CARFUNGAL.create(serverWorld);
+		CarfungalEntity retval = ShadowfallModEntities.CARFUNGAL.get().create(serverWorld);
 		retval.finalizeSpawn(serverWorld, serverWorld.getCurrentDifficultyAt(retval.blockPosition()), MobSpawnType.BREEDING, null, null);
 		return retval;
 	}
 
 	@Override
 	public boolean isFood(ItemStack stack) {
-		return List.of(Blocks.CRIMSON_FUNGUS.asItem()).contains(stack);
+		return List.of(Blocks.CRIMSON_FUNGUS.asItem()).contains(stack.getItem());
 	}
 
 	@Override
@@ -258,7 +264,7 @@ public class CarfungalEntity extends TamableAnimal {
 	}
 
 	public static void init() {
-		SpawnPlacements.register(ShadowfallModEntities.CARFUNGAL, SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
+		SpawnPlacements.register(ShadowfallModEntities.CARFUNGAL.get(), SpawnPlacements.Type.ON_GROUND, Heightmap.Types.MOTION_BLOCKING_NO_LEAVES,
 				(entityType, world, reason, pos, random) -> (world.getDifficulty() != Difficulty.PEACEFUL
 						&& Monster.isDarkEnoughToSpawn(world, pos, random) && Mob.checkMobSpawnRules(entityType, world, reason, pos, random)));
 	}

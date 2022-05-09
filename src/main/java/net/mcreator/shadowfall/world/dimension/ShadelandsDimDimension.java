@@ -1,7 +1,6 @@
 
 package net.mcreator.shadowfall.world.dimension;
 
-import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -16,6 +15,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.client.renderer.DimensionSpecialEffects;
 
+import net.mcreator.shadowfall.init.ShadowfallModBlocks;
+
 import java.util.Set;
 import java.util.HashSet;
 
@@ -29,10 +30,8 @@ public class ShadelandsDimDimension {
 		public static void registerFillerBlocks(FMLCommonSetupEvent event) {
 			Set<Block> replaceableBlocks = new HashSet<>();
 			replaceableBlocks.add(Blocks.BLACKSTONE);
-			replaceableBlocks.add(ForgeRegistries.BIOMES.getValue(new ResourceLocation("shadowfall:shadelands")).getGenerationSettings()
-					.getSurfaceBuilder().get().config().getTopMaterial().getBlock());
-			replaceableBlocks.add(ForgeRegistries.BIOMES.getValue(new ResourceLocation("shadowfall:shadelands")).getGenerationSettings()
-					.getSurfaceBuilder().get().config().getUnderMaterial().getBlock());
+			replaceableBlocks.add(Blocks.GRASS_BLOCK);
+			replaceableBlocks.add(ShadowfallModBlocks.SHADE_SHALE.get());
 			event.enqueueWork(() -> {
 				WorldCarver.CAVE.replaceableBlocks = new ImmutableSet.Builder<Block>().addAll(WorldCarver.CAVE.replaceableBlocks)
 						.addAll(replaceableBlocks).build();

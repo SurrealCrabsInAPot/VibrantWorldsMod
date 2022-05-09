@@ -21,7 +21,7 @@ public class FreakingSweetEnchantment extends Enchantment {
 
 	@Override
 	public boolean canApplyAtEnchantingTable(ItemStack stack) {
-		if (stack.getItem() == ShadowfallModItems.SWEET_OBSIDIAN_DAGGER)
+		if (stack.getItem() == ShadowfallModItems.SWEET_OBSIDIAN_DAGGER.get())
 			return true;
 		if (stack.getItem() == Items.WOODEN_SWORD)
 			return true;

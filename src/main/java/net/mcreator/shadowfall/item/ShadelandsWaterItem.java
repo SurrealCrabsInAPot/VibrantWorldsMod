@@ -11,8 +11,7 @@ import net.mcreator.shadowfall.init.ShadowfallModFluids;
 
 public class ShadelandsWaterItem extends BucketItem {
 	public ShadelandsWaterItem() {
-		super(() -> ShadowfallModFluids.SHADELANDS_WATER,
+		super(ShadowfallModFluids.SHADELANDS_WATER,
 				new Item.Properties().craftRemainder(Items.BUCKET).stacksTo(1).rarity(Rarity.COMMON).tab(CreativeModeTab.TAB_MISC));
-		setRegistryName("shadelands_water_bucket");
 	}
 }

@@ -1,3 +1,4 @@
+
 package net.mcreator.shadowfall.client.renderer;
 
 import net.minecraft.resources.ResourceLocation;
