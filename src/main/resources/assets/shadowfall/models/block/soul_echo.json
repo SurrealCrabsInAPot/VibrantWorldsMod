@@ -1,0 +1,7 @@
+{
+  "parent": "block/cross",
+  "textures": {
+    "cross": "shadowfall:blocks/soul_echo_flower",
+    "particle": "shadowfall:blocks/soul_echo_flower"
+  }
+}

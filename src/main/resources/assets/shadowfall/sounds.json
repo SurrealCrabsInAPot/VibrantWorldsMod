@@ -1,0 +1,12 @@
+{
+  "carfungal_grumble": {
+    "category": "neutral",
+    "subtitle": "subtitles.carfungal_grumble",
+    "sounds": [
+      {
+        "name": "shadowfall:carfungal",
+        "stream": false
+      }
+    ]
+  }
+}

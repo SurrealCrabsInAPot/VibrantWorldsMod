@@ -1,0 +1,318 @@
+{
+  "mod_elements": [
+    {
+      "name": "Carfungal",
+      "type": "livingentity",
+      "sortid": 21,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "carfungal"
+    },
+    {
+      "name": "Shadelands",
+      "type": "biome",
+      "sortid": 22,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "shadelands"
+    },
+    {
+      "name": "CarfungalNaturalEntitySpawningCondition",
+      "type": "procedure",
+      "sortid": 22,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "carfungal_natural_entity_spawning_condition",
+      "metadata": {
+        "dependencies": []
+      }
+    },
+    {
+      "name": "ShadelandsDim",
+      "type": "dimension",
+      "sortid": 23,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "shadelands_dim",
+      "metadata": {
+        "ep": true
+      }
+    },
+    {
+      "name": "ShadelandsKey",
+      "type": "item",
+      "sortid": 24,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "shadelands_key"
+    },
+    {
+      "name": "SweetObsidianDaggerRightClickedInAir",
+      "type": "procedure",
+      "sortid": 25,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sweet_obsidian_dagger_right_clicked_in_air",
+      "metadata": {
+        "dependencies": []
+      }
+    },
+    {
+      "name": "SweetObsidianDagger",
+      "type": "item",
+      "sortid": 25,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sweet_obsidian_dagger"
+    },
+    {
+      "name": "FreakingSweet",
+      "type": "enchantment",
+      "sortid": 26,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "freaking_sweet",
+      "path": "~/blocks"
+    },
+    {
+      "name": "SweetObsidianDaggerRecipe",
+      "type": "recipe",
+      "sortid": 27,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "sweet_obsidian_dagger_recipe",
+      "path": "~/Fluids"
+    },
+    {
+      "name": "ShadelandsWater",
+      "type": "fluid",
+      "sortid": 28,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "shadelands_water",
+      "metadata": {
+        "gb": true
+      },
+      "path": "~/Fluids"
+    },
+    {
+      "name": "ShadelingRightClickedOnEntity",
+      "type": "procedure",
+      "sortid": 29,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "shadeling_right_clicked_on_entity",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "entity",
+            "type": "entity"
+          },
+          {
+            "name": "sourceentity",
+            "type": "entity"
+          }
+        ]
+      },
+      "path": "~/Shadeling"
+    },
+    {
+      "name": "Shadeling",
+      "type": "livingentity",
+      "sortid": 29,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "shadeling"
+    },
+    {
+      "name": "Soulflare",
+      "type": "particle",
+      "sortid": 30,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "soulflare"
+    },
+    {
+      "name": "SoulEcho",
+      "type": "plant",
+      "sortid": 31,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "soul_echo"
+    },
+    {
+      "name": "ShadeShale",
+      "type": "block",
+      "sortid": 32,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "shade_shale",
+      "path": "~/Biomes"
+    },
+    {
+      "name": "Purshroom",
+      "type": "plant",
+      "sortid": 33,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "purshroom",
+      "path": "~/Biomes"
+    },
+    {
+      "name": "Shadeair",
+      "type": "block",
+      "sortid": 34,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "shadeair"
+    },
+    {
+      "name": "ShadeAirUpdatTick",
+      "type": "procedure",
+      "sortid": 34,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "shade_air_updat_tick",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ShadeAir",
+      "type": "procedure",
+      "sortid": 34,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "shade_air",
+      "metadata": {
+        "dependencies": [
+          {
+            "name": "x",
+            "type": "number"
+          },
+          {
+            "name": "y",
+            "type": "number"
+          },
+          {
+            "name": "z",
+            "type": "number"
+          },
+          {
+            "name": "world",
+            "type": "world"
+          }
+        ]
+      }
+    },
+    {
+      "name": "ShademossCoveredSlate",
+      "type": "block",
+      "sortid": 35,
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "shademoss_covered_slate"
+    }
+  ],
+  "variable_elements": [],
+  "sound_elements": [
+    {
+      "name": "carfungal_grumble",
+      "files": [
+        "carfungal"
+      ],
+      "category": "neutral",
+      "subtitle": "Carfungal Grumble"
+    }
+  ],
+  "language_map": {
+    "en_us": {
+      "biome.shadowfall.shadelands": "Shadelands",
+      "entity.shadowfall.carfungal": "Carfungal",
+      "block.shadowfall.purshroom": "Purshroom",
+      "block.shadowfall.shadelands_water": "Shadelands Water",
+      "enchantment.shadowfall.freaking_sweet": "Freaking Sweet",
+      "item.shadowfall.carfungal_spawn_egg": "Carfungal Spawn Egg",
+      "entity.shadowfall.shadeling": "Shadeling",
+      "block.shadowfall.shade_shale": "Shade Shale",
+      "item.shadowfall.shadelands_key": "Shadelands Key",
+      "fluid.shadowfall.shadelands_water": "Shadelands Water",
+      "block.shadowfall.soul_echo": "Soul Echo",
+      "item.shadowfall.sweet_obsidian_dagger": "Sweet Obsidian Dagger",
+      "item.shadowfall.shadeling_spawn_egg": "Shadeling Spawn Egg",
+      "subtitles.carfungal_grumble": "Carfungal Grumble",
+      "block.shadowfall.shademoss_covered_slate": "Shademoss Covered Slate",
+      "item.shadowfall.shadelands_dim": "Shadow Key",
+      "item.shadowfall.shadelands_water_bucket": "Shadelands Water Bucket",
+      "block.shadowfall.shadeair": "Shadeair"
+    }
+  },
+  "foldersRoot": {
+    "name": "~",
+    "children": [
+      {
+        "name": "Entities",
+        "children": []
+      },
+      {
+        "name": "Mobs",
+        "children": []
+      },
+      {
+        "name": "Carfungal",
+        "children": []
+      },
+      {
+        "name": "Shadeling",
+        "children": []
+      },
+      {
+        "name": "Fluids",
+        "children": []
+      },
+      {
+        "name": "blocks",
+        "children": []
+      },
+      {
+        "name": "Biomes",
+        "children": []
+      }
+    ]
+  },
+  "workspaceSettings": {
+    "modid": "shadowfall",
+    "modName": "Shadowfall",
+    "version": "1.0.0",
+    "author": "SurrealCrab, MCreator",
+    "websiteURL": "https://mcreator.net",
+    "license": "Academic Free License v3.0",
+    "disableForgeVersionCheck": true,
+    "serverSideOnly": false,
+    "requiredMods": [],
+    "dependencies": [],
+    "dependants": [],
+    "mcreatorDependencies": [],
+    "currentGenerator": "forge-1.17.1",
+    "modElementsPackage": "net.mcreator.shadowfall",
+    "lockBaseModFiles": false
+  },
+  "mcreatorVersion": 202100354000
+}

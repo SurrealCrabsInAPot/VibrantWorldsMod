@@ -1,0 +1,54 @@
+{
+  "_fv": 24,
+  "_type": "fluid",
+  "definition": {
+    "name": "Shadelands Water",
+    "bucketName": "Shadelands Water Bucket",
+    "textureStill": "umberroot_log_side",
+    "textureFlowing": "umberroot_log_side",
+    "tintType": "No tint",
+    "canMultiply": true,
+    "flowRate": 3,
+    "levelDecrease": 1,
+    "slopeFindDistance": 7,
+    "spawnParticles": true,
+    "dripParticle": {
+      "value": "SOUL"
+    },
+    "flowStrength": 1.5,
+    "luminosity": 15,
+    "density": 1000,
+    "viscosity": 1000,
+    "isGas": false,
+    "temperature": 265,
+    "type": "WATER",
+    "generateBucket": true,
+    "textureBucket": "",
+    "creativeTab": {
+      "value": "MISC"
+    },
+    "emptySound": {
+      "value": ""
+    },
+    "rarity": "COMMON",
+    "specialInfo": [],
+    "resistance": 100.0,
+    "luminance": 0,
+    "lightOpacity": 0,
+    "emissiveRendering": true,
+    "tickRate": 10,
+    "flammability": 0,
+    "fireSpreadSpeed": 0,
+    "colorOnMap": "DEFAULT",
+    "frequencyOnChunks": 3,
+    "spawnWorldTypes": [
+      "CUSTOM:ShadelandsDim",
+      "Surface"
+    ],
+    "restrictionBiomes": [
+      {
+        "value": "CUSTOM:Shadelands"
+      }
+    ]
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "_fv": 24,
+  "_type": "biome",
+  "definition": {
+    "name": "Shadelands",
+    "groundBlock": {
+      "value": "Blocks.GRASS"
+    },
+    "undergroundBlock": {
+      "value": "CUSTOM:ShadeShale"
+    },
+    "airColor": {
+      "value": -10066330,
+      "falpha": 0.0
+    },
+    "grassColor": {
+      "value": -16724788,
+      "falpha": 0.0
+    },
+    "foliageColor": {
+      "value": -16737895,
+      "falpha": 0.0
+    },
+    "waterColor": {
+      "value": -16737895,
+      "falpha": 0.0
+    },
+    "waterFogColor": {
+      "value": -16724788,
+      "falpha": 0.0
+    },
+    "ambientSound": {
+      "value": ""
+    },
+    "additionsSound": {
+      "value": ""
+    },
+    "music": {
+      "value": ""
+    },
+    "moodSound": {
+      "value": ""
+    },
+    "moodSoundDelay": 6000,
+    "spawnParticles": true,
+    "particleToSpawn": {
+      "value": "ASH"
+    },
+    "particlesProbability": 6.8,
+    "biomeCategory": "MUSHROOM",
+    "parent": {
+      "value": "No parent"
+    },
+    "rainingPossibility": 0.5,
+    "temperature": 0.5,
+    "baseHeight": 0.1,
+    "heightVariation": 0.2,
+    "biomeType": "WARM",
+    "spawnBiome": true,
+    "biomeWeight": 10,
+    "biomeDictionaryTypes": [
+      "MUSHROOM",
+      "MAGICAL",
+      "RARE",
+      "OVERWORLD"
+    ],
+    "grassPerChunk": 6,
+    "seagrassPerChunk": 3,
+    "flowersPerChunk": 0,
+    "mushroomsPerChunk": 2,
+    "bigMushroomsChunk": 1,
+    "sandPatchesPerChunk": 0,
+    "gravelPatchesPerChunk": 0,
+    "reedsPerChunk": 0,
+    "cactiPerChunk": 0,
+    "treesPerChunk": 2,
+    "vanillaTreeType": "Default",
+    "treeType": 0,
+    "minHeight": 7,
+    "treeStem": {
+      "value": ""
+    },
+    "treeBranch": {
+      "value": ""
+    },
+    "treeVines": {
+      "value": ""
+    },
+    "treeFruits": {
+      "value": ""
+    },
+    "spawnStronghold": true,
+    "spawnMineshaft": true,
+    "spawnMineshaftMesa": true,
+    "spawnPillagerOutpost": false,
+    "villageType": "none",
+    "spawnWoodlandMansion": false,
+    "spawnJungleTemple": false,
+    "spawnDesertPyramid": false,
+    "spawnSwampHut": false,
+    "spawnIgloo": false,
+    "spawnOceanMonument": false,
+    "spawnShipwreck": true,
+    "spawnShipwreckBeached": true,
+    "spawnBuriedTreasure": false,
+    "oceanRuinType": "COLD",
+    "spawnNetherBridge": false,
+    "spawnNetherFossil": false,
+    "spawnBastionRemnant": false,
+    "spawnEndCity": false,
+    "spawnRuinedPortal": "SWAMP",
+    "defaultFeatures": [
+      "Caves",
+      "Ores",
+      "MonsterRooms"
+    ],
+    "spawnEntries": [
+      {
+        "entity": {
+          "value": "CUSTOM:Carfungal"
+        },
+        "minGroup": 4,
+        "maxGroup": 4,
+        "weight": 20,
+        "spawnType": "monster"
+      }
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "type": "minecraft:stonecutting",
+  "count": 52,
+  "ingredient": {
+    "item": "minecraft:crying_obsidian"
+  },
+  "result": "shadowfall:sweet_obsidian_dagger"
+}

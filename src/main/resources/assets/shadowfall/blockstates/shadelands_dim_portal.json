@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "axis=z": {
+      "model": "shadowfall:block/shadelands_dim_portal_ew"
+    },
+    "axis=x": {
+      "model": "shadowfall:block/shadelands_dim_portal_ns"
+    }
+  }
+}

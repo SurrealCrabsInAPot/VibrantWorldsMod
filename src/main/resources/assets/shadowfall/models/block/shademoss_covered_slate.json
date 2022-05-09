@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "shadowfall:blocks/shadeslate",
+    "up": "shadowfall:blocks/shadelandsmosstop",
+    "north": "shadowfall:blocks/shadeslatemoss",
+    "east": "shadowfall:blocks/shadeslatemoss",
+    "south": "shadowfall:blocks/shadeslatemoss",
+    "west": "shadowfall:blocks/shadeslatemoss",
+    "particle": "shadowfall:blocks/shadeslate"
+  }
+}
